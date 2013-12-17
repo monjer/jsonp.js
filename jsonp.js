@@ -95,63 +95,63 @@
 	 */
 	var jsonp = {
 			
-			/**
-			 * jsonp的调用接口
-			 * @param url {String} script的目标url
-			 * @param opt {Object} 本次请求的可选参数
-			 */
-			call:function(url,opt){
-
-				opt = lowCopy({
-					params:{},
-					callback:emptyFn,
-					timeout:defaultCfgs.timeout,
-					timeoutFn:emptyFn,
-					callbackName:defaultCfgs.callback
-				},opt);
-
-				var suffix = "&";
-				
-				if(url.lastIndexOf("?") < 0){
-					suffix = "?";
-				} ;
-				
-				// 本次调用的唯一标签
-				var uid = new Date().getTime();
-				
-				var callbackName = opt.callbackName+uid;
-				
-				opt.params["callback"]=callbackName;
-				
-				// 生成最终的url
-				url+=suffix+encodeObjToqueryString(opt.params);
-				
-				// 启动定时器
-				var timer = setTimeout(function(){
-					opt.timeoutFn();								
-				},opt.timeout);
-				
-				//构建实际调用的函数，将导出到全局作用域
-				opt_win[callbackName] = function(){
-					clearTimeout(timer);
-					opt.callback();
-					delete opt_win[callbackName];
-				};
-				
-				// 从server端加载script
-				loadScript(url,opt_win[defaultCfgs.callback+uid]);
-			},
+		/**
+		 * jsonp的调用接口
+		 * @param url {String} script的目标url
+		 * @param opt {Object} 本次请求的可选参数
+		 */
+		call:function(url,opt){
+	
+			opt = lowCopy({
+				params:{},
+				callback:emptyFn,
+				timeout:defaultCfgs.timeout,
+				timeoutFn:emptyFn,
+				callbackName:defaultCfgs.callback
+			},opt);
+	
+			var suffix = "&";
 			
-			/**
-			 * 设置jsonp默认的配置
-			 * @param opt 
-			 * 		  timeout {Number} 默认的超时时间
-			 * 		  callback {String} 默认的回调函数名称
-			 */
-			setDefaults:function(opt){
-				opt = opt || {};
-				lowCopy(defaultCfgs , opt);
-			}
+			if(url.lastIndexOf("?") < 0){
+				suffix = "?";
+			} ;
+			
+			// 本次调用的唯一标签
+			var uid = new Date().getTime();
+			
+			var callbackName = opt.callbackName+uid;
+			
+			opt.params["callback"]=callbackName;
+			
+			// 生成最终的url
+			url+=suffix+encodeObjToqueryString(opt.params);
+			
+			// 启动定时器
+			var timer = setTimeout(function(){
+				opt.timeoutFn();								
+			},opt.timeout);
+			
+			//构建实际调用的函数，将导出到全局作用域
+			opt_win[callbackName] = function(){
+				clearTimeout(timer);
+				opt.callback();
+				delete opt_win[callbackName];
+			};
+			
+			// 从server端加载script
+			loadScript(url,opt_win[defaultCfgs.callback+uid]);
+		},
+		
+		/**
+		 * 设置jsonp默认的配置
+		 * @param opt 
+		 * 		  timeout {Number} 默认的超时时间
+		 * 		  callback {String} 默认的回调函数名称
+		 */
+		setDefaults:function(opt){
+			opt = opt || {};
+			lowCopy(defaultCfgs , opt);
+		}
 	};
 	
 	// export	
