@@ -116,7 +116,7 @@
 			} ;
 			
 			// 本次调用的唯一标签
-			var uid = new Date().getTime();
+			var uid = (new Date()).getTime();
 			
 			var callbackName = opt.callbackName+uid;
 			
