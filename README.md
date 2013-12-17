@@ -13,7 +13,6 @@ Just another simple jsonp util
 		+ `callback` {Function} jsonp 成功请求后的回调
 		+ `timeout` {Number} 超时时间
 		+ `timeoutFn` {Function} 超时回调
-		+ `callbackName` jsonp callback函数名称
 		
 2. #####json.setDefaults(opt)
 	+ `opt` {Object} 配置参数
