@@ -106,8 +106,7 @@
 				params:{},
 				callback:emptyFn,
 				timeout:defaultCfgs.timeout,
-				timeoutFn:emptyFn,
-				callbackName:defaultCfgs.callback
+				timeoutFn:emptyFn
 			},opt);
 	
 			var suffix = "&";
