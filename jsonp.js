@@ -132,9 +132,9 @@
 			},opt.timeout);
 			
 			//构建实际调用的函数，将导出到全局作用域
-			opt_win[callbackName] = function(){
+			opt_win[callbackName] = function(data){
 				clearTimeout(timer);
-				opt.callback();
+				opt.callback(data);
 				delete opt_win[callbackName];
 			};
 			
