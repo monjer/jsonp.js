@@ -145,8 +145,8 @@
 		/**
 		 * 设置jsonp默认的配置
 		 * @param opt 
-		 * 		  timeout {Number} 默认的超时时间
-		 * 		  callback {String} 默认的回调函数名称
+		 * 	  timeout {Number} 默认的超时时间
+		 *        callback {String} 默认的回调函数名称
 		 */
 		setDefaults:function(opt){
 			opt = opt || {};
