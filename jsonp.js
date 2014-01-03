@@ -12,7 +12,7 @@
 	 */
 	var defaultCfgs = {
 		timeout:4000,
-		callback:"jsonpCallback"
+	   callbackName:"jsonpCallback"
 	};
 	
 	/**
@@ -115,12 +115,7 @@
 				suffix = "?";
 			} ;
 			
-			// 本次调用的唯一标签
-			var uid = (new Date()).getTime();
-			
-			var callbackName = opt.callbackName+uid;
-			
-			opt.params["callback"]=callbackName;
+			var callbackName = opt.params["callback"] = (defaultCfgs.callbackName+new Date().getTime());
 			
 			// 生成最终的url
 			url+=suffix+encodeObjToqueryString(opt.params);
