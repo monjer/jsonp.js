@@ -31,5 +31,5 @@ Just another simple jsonp util
 	})
 	
 	jsonp.setDefaults({
-		callback:"jsonpcall"
+		callbackName:"jsonpCall"
 	});
