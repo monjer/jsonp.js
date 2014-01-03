@@ -15,7 +15,7 @@ Just another simple jsonp util
 
 2. ####json.setDefaults(opt)
 	+ `opt` {Object} 配置参数
-		+ `callback` {String} jsonp函数名称前缀
+		+ `callbackName` {String} jsonp函数名称前缀
 		+ `timeout`	 {Number} timeout时间
 		
 ####Use
