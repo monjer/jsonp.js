@@ -11,8 +11,8 @@
 	 * jsonp默认的配置
 	 */
 	var defaultCfgs = {
-			timeout:4000,
-			callback:"jsonp"
+		timeout:4000,
+		callback:"jsonpCallback"
 	};
 	
 	/**
@@ -138,7 +138,7 @@
 			};
 			
 			// 从server端加载script
-			loadScript(url,opt_win[defaultCfgs.callback+uid]);
+			loadScript(url,opt_win[callbackName]);
 		},
 		
 		/**
